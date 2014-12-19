@@ -40,8 +40,7 @@ defmodule Issues.CLI do
   end
 
   def decode_response({:ok, body}), do: body
-
-  def decode_response({:error, body}) do
+  def decode_response({:error, error}) do
     {_, message} = List.keyfind(error, "message", 0)
     IO.puts "Error fetching from Github: #{message}"
     System.halt(2)
